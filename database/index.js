@@ -8,7 +8,7 @@ const db = new Sequelize(process.env.MYSQL_DB, process.env.MYSQL_USER, process.e
 });
 
 if (sync)
-  db.query(`SET FOREIGN_KEY_CHECKS = ${force ? "1" : "0"};`).then(
+  db.query(`SET FOREIGN_KEY_CHECKS = ${!force ? "1" : "0"};`).then(
     () =>
       db.sync({ force })
   )
